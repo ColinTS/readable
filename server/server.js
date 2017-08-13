@@ -17,7 +17,7 @@ app.use(cors())
 app.get('/', (req, res) => {
   const help = `
   <pre>
-    Welcome to the Udacity Readable API!!!!!
+    Welcome to the Udacity Readable API!!!!!!
 
     Use an Authorization header to work with your own data:
 

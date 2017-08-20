@@ -6,13 +6,13 @@ class Categories extends Component {
   render(){
 
     const { categories } = this.props
-    console.log(this.props)
-    
-    //map over categories and get id to LINK to category page
+    console.log(categories)
 
     return(
       <div>
-       
+        {categories && categories.map(category => 
+          <div>{category.name}</div>
+        )}
       </div>
     )
   }

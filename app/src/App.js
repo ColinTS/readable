@@ -10,7 +10,10 @@ import LoadCategories from './actions'
 class App extends Component {
 
    componentWillMount(){
-     this.props.store.dispatch(LoadCategories(API.getCategories()))
+     API.getCategories()
+     .then((data) => {
+        this.props.store.dispatch(LoadCategories(data))
+     })
    }
 
   render() {

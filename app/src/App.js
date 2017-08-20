@@ -11,11 +11,10 @@ import LoadCategories from './actions'
 class App extends Component {
 
    componentWillMount(){
-     loadCats(API.getCategories())
+     this.props.store.dispatch(LoadCategories(API.getCategories()))
    }
 
   render() {
-    const { loadCats } = this.props
 
     return (
       <div className="App">
@@ -35,12 +34,4 @@ class App extends Component {
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    loadCats: (categories) => dispatch(LoadCategories(categories)),
-  }
-}
-
-export default connect(
-  mapDispatchToProps
-)(App)
+export default App

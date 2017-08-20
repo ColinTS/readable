@@ -5,7 +5,6 @@ import { Route } from 'react-router-dom'
 import * as API from './utils/api.js'
 import Categories from './components/Categories'
 import Posts from './components/Posts'
-import { connect } from 'react-redux'
 import LoadCategories from './actions'
 
 class App extends Component {

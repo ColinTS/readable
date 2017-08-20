@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-export default class Categories extends Component {
+class Categories extends Component {
 
   render(){
-    const categories = this.props.categories
-    console.log(categories)
+
+    const { categories } = this.props
+    console.log(this.props)
     
     //map over categories and get id to LINK to category page
 
     return(
       <div>
-        {categories && categories.map((category) => (
-          <div>{category.name}</div>
-        ))}
+       
       </div>
     )
   }
 }
+
+function mapStateToProps (categories) {
+  return {
+    categories
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Categories)

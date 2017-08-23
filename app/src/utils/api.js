@@ -1,3 +1,5 @@
+import LoadCategories from '../actions'
+
 let token = localStorage.token
 if (!token)
   token = localStorage.token = Math.random().toString(36).substr(-8)
@@ -7,5 +9,6 @@ export const getCategories = () => {
         headers: { Authorization: token }
       })
         .then((res) => res.json())
-        .then(data => data.categories)     
+        .then(data => data.categories)
+        // .then(categories => dispatch.LoadCategories(categories))     
 }

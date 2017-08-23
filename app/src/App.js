@@ -10,12 +10,12 @@ import { connect } from 'react-redux'
 
 class App extends Component {
 
-  //  componentWillMount(){
-  //    API.getCategories()
-  //    .then((data) => {
-  //      LoadCategories(data)
-  //    })
-  //  }
+   componentWillMount(){
+     API.getCategories()
+     .then((data) => {
+       this.props.fetchCategories(data)
+     })
+   }
 
   render() {
     const { fetchCategories } = this.props
@@ -27,14 +27,7 @@ class App extends Component {
           </div>
 
           <Route exact path ='/' render={() => (
-            <Categories
-              categories={
-                API.getCategories()
-                  .then((data) => {
-                    fetchCategories(data)
-                  })
-              }
-            />
+            <Categories />
           )} />
 
           <Route path ='/categories/:id' render={() => (

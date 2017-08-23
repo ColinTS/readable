@@ -45,5 +45,6 @@ function mapDispatchToProps (dispatch) {
 
 
 export default connect(
+  false,
   mapDispatchToProps
 )(App)

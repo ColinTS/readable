@@ -1,4 +1,3 @@
-import LoadCategories from '../actions'
 
 let token = localStorage.token
 if (!token)

@@ -6,17 +6,19 @@ import * as API from './utils/api.js'
 import Categories from './components/Categories'
 import Posts from './components/Posts'
 import LoadCategories from './actions'
+import { connect } from 'react-redux'
 
 class App extends Component {
 
-   componentWillMount(){
-     API.getCategories()
-     .then((data) => {
-        this.props.store.dispatch(LoadCategories(data))
-     })
-   }
+  //  componentWillMount(){
+  //    API.getCategories()
+  //    .then((data) => {
+  //      LoadCategories(data)
+  //    })
+  //  }
 
   render() {
+    const { fetchCategories } = this.props
 
     return (
       <div className="App">
@@ -25,7 +27,14 @@ class App extends Component {
           </div>
 
           <Route exact path ='/' render={() => (
-            <Categories/>
+            <Categories
+              categories={
+                API.getCategories()
+                  .then((data) => {
+                    fetchCategories(data)
+                  })
+              }
+            />
           )} />
 
           <Route path ='/categories/:id' render={() => (
@@ -36,4 +45,13 @@ class App extends Component {
   }
 }
 
-export default App
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchCategories: (data) => dispatch(LoadCategories(data)),
+  }
+}
+
+
+export default connect(
+  mapDispatchToProps
+)(App)

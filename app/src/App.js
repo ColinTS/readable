@@ -18,7 +18,6 @@ class App extends Component {
    }
 
   render() {
-    const { fetchCategories } = this.props
 
     return (
       <div className="App">

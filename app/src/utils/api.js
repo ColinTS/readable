@@ -9,5 +9,4 @@ export const getCategories = () => {
       })
         .then((res) => res.json())
         .then(data => data.categories)
-        // .then(categories => dispatch.LoadCategories(categories))     
 }

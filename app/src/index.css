@@ -4,3 +4,16 @@ body {
   font-family: sans-serif;
   background-color: #F6F6F6;
 }
+
+.categoryCard {
+  background-color: #FFFFFF;
+  height: 400px;
+  width: 200px;
+}
+
+.categoryContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+}

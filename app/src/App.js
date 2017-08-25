@@ -29,8 +29,8 @@ class App extends Component {
             <Categories />
           )} />
 
-          <Route path ='/categories/:id' render={() => (
-            <Posts/>
+          <Route path ='/categories/:name' render={() => (
+            <Posts />
           )} />
       </div>
     );

@@ -7,6 +7,7 @@ import Categories from './components/Categories'
 import Posts from './components/Posts'
 import LoadCategories from './actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 class App extends Component {
 
@@ -44,7 +45,7 @@ function mapDispatchToProps (dispatch) {
 }
 
 
-export default connect(
+export default withRouter(connect(
   false,
   mapDispatchToProps
-)(App)
+)(App))

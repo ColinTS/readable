@@ -1,13 +1,17 @@
+import { combineReducers } from 'redux'
 
 import {
   LOAD_CATEGORIES,
+  LOAD_POSTS
 } from '../actions'
 
-const initialState = {
+
+//Calender reducer
+const initialCategoriesState = {
   categories: []
 }
 
-export default function ReadableApp(state = initialState, action){
+function categories(state = initialCategoriesState, action){
   switch(action.type) {
     case LOAD_CATEGORIES:
       return {
@@ -18,3 +22,25 @@ export default function ReadableApp(state = initialState, action){
       return state
   }
 }
+
+//Posts reducer
+const initialPostsState = {
+  posts: []
+}
+
+function posts(state = initialPostsState, action){
+  switch(action.type) {
+    case LOAD_POSTS:
+      return {
+        ...state,
+        posts: action.posts
+    }
+    default: 
+      return state
+  }
+}
+
+export default combineReducers({
+  categories,
+  posts,
+})

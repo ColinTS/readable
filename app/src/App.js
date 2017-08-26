@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 import * as API from './utils/api.js'
 import Categories from './components/Categories'
 import Posts from './components/Posts'
-import LoadCategories from './actions'
+import {LoadCategories} from './actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -16,6 +16,7 @@ class App extends Component {
      .then((data) => {
        this.props.fetchCategories(data)
      })
+
    }
 
   render() {
@@ -30,9 +31,7 @@ class App extends Component {
             <Categories />
           )} />
 
-          <Route path ='/categories/:name' render={() => (
-            <Posts />
-          )} />
+          <Route path ='/categories/:name' component={Posts} />
       </div>
     );
   }

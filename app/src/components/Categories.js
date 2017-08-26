@@ -8,11 +8,11 @@ class Categories extends Component {
   render(){
 
     const { categories } = this.props
-    console.log(categories)
+    console.log(categories.categories)
 
     return(
       <div className="categoryContainer">
-        {categories && categories.map(category => 
+        {categories && categories.categories.map(category => 
           <Link key={category.name} to={`/categories/${category.name}`} className="categoryCard">{category.name}</Link>
         )}
       </div>

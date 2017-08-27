@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as API from '../utils/api.js'
 import { connect } from 'react-redux'
+import uparrow from '../assets/uparrow.svg'
+import '../App.css';
 
 export default class PostCard extends Component {
 
@@ -12,7 +14,7 @@ export default class PostCard extends Component {
         <div className='postCard'>
             <div className='deletePost'>delete</div>
             <div className='postHeader'> 
-                <object type="image/svg+xml" data="../assets/uparrow.svg"></object>
+                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow"></object>
                 <div>{post.voteScore}</div>
                 <div>{post.title}</div>
                 <div>{post.author}</div>

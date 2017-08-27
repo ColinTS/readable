@@ -17,3 +17,14 @@ body {
   justify-content: space-around;
   margin: 0;
 }
+
+.postContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.postCard {
+  background-color: #FFFFFF;
+  width: 900px;
+}

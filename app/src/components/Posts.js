@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from '../utils/api.js'
 import {LoadPosts} from '../actions'
 import { connect } from 'react-redux'
+import PostCard from './PostCard'
 
 class Posts extends Component {
 
@@ -14,12 +15,17 @@ componentWillMount(){
 }
 
   render(){
-    //   console.log(this.props)
     const { posts } = this.props
+    console.log('posts',posts)
 
     return(
-      <div className="postsContainer">
-       hey
+      <div className="postContainer">
+        {posts && posts.posts.map((post) => (
+          <PostCard 
+            post={post}
+            key={post.id}
+          />
+        ))}
       </div>
     )
   }

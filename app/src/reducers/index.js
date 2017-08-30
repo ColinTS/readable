@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 
 import {
   LOAD_CATEGORIES,
-  LOAD_POSTS
+  LOAD_POSTS,
+  LOAD_COMMENTS
 } from '../actions'
 
 
@@ -40,7 +41,25 @@ function posts(state = initialPostsState, action){
   }
 }
 
+//Comments reducer
+const initialCommentsState = {
+  commenets: []
+}
+
+function comments(state = initialPostsState, action){
+  switch(action.type) {
+    case LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.comments
+    }
+    default: 
+      return state
+  }
+}
+
 export default combineReducers({
   categories,
   posts,
+  comments
 })

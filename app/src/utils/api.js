@@ -11,8 +11,18 @@ export const getCategories = () => {
         .then(data => data.categories)
 }
 
-export const getPosts = (category) => {
-  return fetch(`http://localhost:5001/${category}/posts`, {
+export const getPosts = (categoryID) => {
+  return fetch(`http://localhost:5001/${categoryID}/posts`, {
+    headers: { Authorization: token }
+  })
+    .then((res) => res.json())
+    .then(data => data)
+}
+
+//GET /posts/:id/comments
+
+export const getComments = (postID) => {
+  return fetch(`http://localhost:5001/${postID}/comments`, {
     headers: { Authorization: token }
   })
     .then((res) => res.json())

@@ -10,13 +10,12 @@ componentWillMount(){
     API.getPosts(this.props.match.params.name)
     .then((data) => {
         this.props.fetchPosts(data)
-        console.log(data)
+        console.log('post API success',data)
     })
 }
 
   render(){
     const { posts } = this.props
-    console.log('posts',posts)
 
     return(
       <div className="postContainer">

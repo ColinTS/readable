@@ -2,19 +2,30 @@ import React, { Component } from 'react';
 import * as API from '../utils/api.js'
 import { connect } from 'react-redux'
 import uparrow from '../assets/uparrow.svg'
+import downarrow from '../assets/downarrow.svg'
+import Comments from './Comments'
+import {LoadComments} from '../actions'
 import '../App.css';
 
-export default class PostCard extends Component {
+class PostCard extends Component {
+
+componentWillMount(){
+    API.getComments(this.props.posts.id)
+    .then((data) => {
+        this.props.fetchComments(data)
+        console.log(data)
+    })
+}
 
   render(){
       const { post } = this.props
-      console.log(post.score)
 
     return(
         <div className='postCard'>
             <div className='deletePost'>delete</div>
             <div className='postHeader'> 
                 <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow"></object>
+                <object className="down-arrow"type="image/svg+xml" data={downarrow} alt="downarrow"></object>
                 <div>{post.voteScore}</div>
                 <div>{post.title}</div>
                 <div>{post.author}</div>
@@ -23,7 +34,11 @@ export default class PostCard extends Component {
                 <div>{post.body}</div> 
             </div>
             <div className='postComments'> 
-                    
+                {comments && comments.comments.map((comment) => (
+                    <Comments
+                        key={comment.id}
+                    />
+                ))}
             </div>
             <div className='commentForm'> 
                            
@@ -32,3 +47,20 @@ export default class PostCard extends Component {
     )
   }
 }
+
+function mapDispatchToProps (dispatch) {
+    return {
+      fetchComments: (comments) => dispatch(LoadComments(comments)),
+    }
+  }
+
+function mapStateToProps ({comments}) {
+    return {
+        comments
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PostCard)

@@ -1,20 +1,22 @@
 import { combineReducers } from 'redux'
 
 import {
-  LOAD_CATEGORIES,
+  LOAD_CATEGORIES_SUCCESS,
   LOAD_POSTS,
   LOAD_COMMENTS
-} from '../actions'
+} from '../constants.js'
 
 
-//Calender reducer
-const initialCategoriesState = {
-  categories: []
+const initialState = {
+  categories: [],
+  posts: [],
+  commenets: []
+
 }
 
-function categories(state = initialCategoriesState, action){
+function categories(state = initialState, action){
   switch(action.type) {
-    case LOAD_CATEGORIES:
+    case LOAD_CATEGORIES_SUCCESS:
       return {
         ...state,
         categories: action.categories
@@ -24,12 +26,7 @@ function categories(state = initialCategoriesState, action){
   }
 }
 
-//Posts reducer
-const initialPostsState = {
-  posts: []
-}
-
-function posts(state = initialPostsState, action){
+function posts(state = initialState, action){
   switch(action.type) {
     case LOAD_POSTS:
       return {
@@ -41,12 +38,7 @@ function posts(state = initialPostsState, action){
   }
 }
 
-//Comments reducer
-const initialCommentsState = {
-  commenets: []
-}
-
-function comments(state = initialPostsState, action){
+function comments(state = initialState, action){
   switch(action.type) {
     case LOAD_COMMENTS:
       return {

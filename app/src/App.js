@@ -5,19 +5,15 @@ import { Route } from 'react-router-dom'
 import * as API from './utils/api.js'
 import Categories from './components/Categories'
 import Posts from './components/Posts'
-import {LoadCategories} from './actions'
+import {LoadCategoriesAction} from './actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 class App extends Component {
 
-   componentWillMount(){
-     API.getCategories()
-     .then((data) => {
-       this.props.fetchCategories(data)
-     })
-
-   }
+  componentWillMount(){
+    this.props.loadCategories()
+  }
 
   render() {
 
@@ -39,10 +35,9 @@ class App extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-    fetchCategories: (data) => dispatch(LoadCategories(data)),
+    loadCategories: () => dispatch(LoadCategoriesAction()),
   }
 }
-
 
 export default withRouter(connect(
   false,

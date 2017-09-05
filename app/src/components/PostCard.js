@@ -9,16 +9,16 @@ import '../App.css';
 
 class PostCard extends Component {
 
-componentWillMount(){
-    API.getComments(this.props.posts.id)
-    .then((data) => {
-        this.props.fetchComments(data)
-        console.log(data)
-    })
-}
+// componentWillMount(){
+//     API.getComments(this.props.posts.id)
+//     .then((data) => {
+//         this.props.fetchComments(data)
+//         console.log(data)
+//     })
+// }
 
   render(){
-      const { post } = this.props
+    const { post } = this.props
 
     return(
         <div className='postCard'>
@@ -34,11 +34,11 @@ componentWillMount(){
                 <div>{post.body}</div> 
             </div>
             <div className='postComments'> 
-                {comments && comments.comments.map((comment) => (
+                {/* {comments && comments.comments.map((comment) => (
                     <Comments
                         key={comment.id}
                     />
-                ))}
+                ))} */}
             </div>
             <div className='commentForm'> 
                            

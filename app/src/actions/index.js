@@ -1,11 +1,28 @@
-export const LOAD_CATEGORIES = 'LOAD_CATEGORIES'
+import {
+  LOAD_CATEGORIES,
+  LOAD_CATEGORIES_SUCCESS,
+  LOAD_CATEGORIES_FAIL
+} from '../constants.js'
+
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const LOAD_COMMENTS = 'LOAD_COMMENTS'
 
-export function LoadCategories (categories) {
+export function LoadCategoriesAction () {
   return {
-    type: LOAD_CATEGORIES,
+    type: LOAD_CATEGORIES
+  }
+}
+
+export function LoadCategoriesSuccessAction (categories) {
+  return {
+    type: LOAD_CATEGORIES_SUCCESS,
     categories
+  }
+}
+
+export function LoadCategoriesFailAction () {
+  return {
+    type: LOAD_CATEGORIES_FAIL
   }
 }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './assets/logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom'
-import * as API from './utils/api.js'
 import Categories from './components/Categories'
 import Posts from './components/Posts'
 import {LoadCategoriesAction} from './actions'

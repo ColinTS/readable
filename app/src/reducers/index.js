@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 import {
   LOAD_CATEGORIES_SUCCESS,
-  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
   LOAD_COMMENTS
 } from '../constants.js'
 
@@ -28,7 +28,7 @@ function categories(state = initialState, action){
 
 function posts(state = initialState, action){
   switch(action.type) {
-    case LOAD_POSTS:
+    case LOAD_POSTS_SUCCESS:
       return {
         ...state,
         posts: action.posts

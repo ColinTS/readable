@@ -1,10 +1,13 @@
 import {
   LOAD_CATEGORIES,
   LOAD_CATEGORIES_SUCCESS,
-  LOAD_CATEGORIES_FAIL
+  LOAD_CATEGORIES_FAIL,
+  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_FAIL
 } from '../constants.js'
 
-export const LOAD_POSTS = 'LOAD_POSTS'
+
 export const LOAD_COMMENTS = 'LOAD_COMMENTS'
 
 export function LoadCategoriesAction () {
@@ -26,10 +29,23 @@ export function LoadCategoriesFailAction () {
   }
 }
 
-export function LoadPosts (posts) {
+export function LoadPostsAction (category) {
   return {
     type: LOAD_POSTS,
+    category
+  }
+}
+
+export function LoadPostsSuccessAction (posts) {
+  return {
+    type: LOAD_POSTS_SUCCESS,
     posts
+  }
+}
+
+export function LoadPostsFailAction () {
+  return {
+    type: LOAD_POSTS_FAIL
   }
 }
 

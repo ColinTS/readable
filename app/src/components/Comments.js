@@ -4,9 +4,11 @@ export default class Comments extends Component {
 
   render(){
 
+    const {comment} = this.props
+
     return(
       <div className="categoryContainer">
-        NICE BOIIIII
+        {comment.body}
       </div>
     )
   }

@@ -4,11 +4,12 @@ import {
   LOAD_CATEGORIES_FAIL,
   LOAD_POSTS,
   LOAD_POSTS_SUCCESS,
-  LOAD_POSTS_FAIL
+  LOAD_POSTS_FAIL,
+  LOAD_COMMENTS,
+  LOAD_COMMENTS_SUCCESS,
+  LOAD_COMMENTS_FAIL
 } from '../constants.js'
 
-
-export const LOAD_COMMENTS = 'LOAD_COMMENTS'
 
 export function LoadCategoriesAction () {
   return {
@@ -49,9 +50,22 @@ export function LoadPostsFailAction () {
   }
 }
 
-export function LoadComments (comments) {
+export function LoadCommentsAction (postID) {
   return {
     type: LOAD_COMMENTS,
+    postID
+  }
+}
+
+export function LoadCommentsSuccessAction (comments) {
+  return {
+    type: LOAD_COMMENTS_SUCCESS,
     comments
+  }
+}
+
+export function LoadCommentsFailAction () {
+  return {
+    type: LOAD_COMMENTS_FAIL
   }
 }

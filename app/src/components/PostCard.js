@@ -4,23 +4,21 @@ import { connect } from 'react-redux'
 import uparrow from '../assets/uparrow.svg'
 import downarrow from '../assets/downarrow.svg'
 import Comments from './Comments'
-import {LoadComments} from '../actions'
+import {LoadCommentsAction} from '../actions'
 import '../App.css';
 
 class PostCard extends Component {
 
-// componentWillMount(){
-//     API.getComments(this.props.posts.id)
-//     .then((data) => {
-//         this.props.fetchComments(data)
-//         console.log(data)
-//     })
-// }
+componentWillMount(){
+    this.props.loadComments(this.props.post.id)
+}
 
   render(){
-    const { post } = this.props
-
+    const { comments, post } = this.props
+    const haveComments = comments.length > 0
+    console.log('COM', comments)
     return(
+
         <div className='postCard'>
             <div className='deletePost'>delete</div>
             <div className='postHeader'> 
@@ -34,11 +32,13 @@ class PostCard extends Component {
                 <div>{post.body}</div> 
             </div>
             <div className='postComments'> 
-                {/* {comments && comments.comments.map((comment) => (
+                {comments && comments.map((comment) => (
                     <Comments
+                        comment={comment}
                         key={comment.id}
                     />
-                ))} */}
+                ))}
+                {!haveComments && <div>no comments</div>}
             </div>
             <div className='commentForm'> 
                            
@@ -50,7 +50,7 @@ class PostCard extends Component {
 
 function mapDispatchToProps (dispatch) {
     return {
-      fetchComments: (comments) => dispatch(LoadComments(comments)),
+      loadComments: (postID) => dispatch(LoadCommentsAction(postID)),
     }
   }
 

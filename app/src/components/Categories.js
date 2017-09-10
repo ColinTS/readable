@@ -12,7 +12,7 @@ class Categories extends Component {
 
     return(
       <div className="categoryContainer">
-        {categories && categories.categories.map(category => 
+        {categories && categories.map(category => 
           <Link key={category.name} to={`/categories/${category.name}`} className="categoryCard">{category.name}</Link>
         )}
       </div>

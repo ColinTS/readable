@@ -7,7 +7,8 @@ export default class Comments extends Component {
     const {comment} = this.props
 
     return(
-      <div className="categoryContainer">
+      <div className="commentContainer">
+        <hr></hr>
         {comment.body}
       </div>
     )

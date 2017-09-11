@@ -1,28 +1,46 @@
+import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
+
 import {
   LOAD_CATEGORIES_SUCCESS,
   LOAD_POSTS_SUCCESS,
   LOAD_COMMENTS_SUCCESS
-} from '../constants'
+} from '../constants.js'
 
-//Calender reducer
+
 const initialState = {
   categories: [],
   posts: [],
   comments: []
+
 }
 
-function reducer(state = initialState, action){
+function categories(state = initialState, action){
   switch(action.type) {
     case LOAD_CATEGORIES_SUCCESS:
       return {
         ...state,
         categories: action.categories
       }
+    default: 
+      return state
+  }
+}
+
+function posts(state = initialState, action){
+  switch(action.type) {
     case LOAD_POSTS_SUCCESS:
       return {
         ...state,
         posts: action.posts
-      }
+    }
+    default: 
+      return state
+  }
+}
+
+function comments(state = initialState, action){
+  switch(action.type) {
     case LOAD_COMMENTS_SUCCESS:
       return {
         ...state,
@@ -33,4 +51,9 @@ function reducer(state = initialState, action){
   }
 }
 
-export default reducer;
+export default combineReducers({
+  form: formReducer,
+  categories,
+  posts,
+  comments
+})

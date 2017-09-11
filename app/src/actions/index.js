@@ -7,7 +7,10 @@ import {
   LOAD_POSTS_FAIL,
   LOAD_COMMENTS,
   LOAD_COMMENTS_SUCCESS,
-  LOAD_COMMENTS_FAIL
+  LOAD_COMMENTS_FAIL,
+  POST_COMMENT,
+  POST_COMMENT_SUCCESS,
+  POST_COMMENT_FAIL
 } from '../constants.js'
 
 
@@ -67,5 +70,30 @@ export function LoadCommentsSuccessAction (comments) {
 export function LoadCommentsFailAction () {
   return {
     type: LOAD_COMMENTS_FAIL
+  }
+}
+
+export function PostCommentAction(body, id, timestamp, owner, parentID){
+  return {
+    type: POST_COMMENT,
+    body,
+    id,
+    timestamp,
+    owner,
+    parentID
+  }
+}
+
+export function PostCommentSuccessAction(comment){
+  return {
+    type: POST_COMMENT_SUCCESS,
+    comment
+  }
+}
+
+
+export function PostCommentFailAction(){
+  return {
+    type: POST_COMMENT_FAIL
   }
 }

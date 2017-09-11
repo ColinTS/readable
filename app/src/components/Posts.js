@@ -16,7 +16,7 @@ componentWillMount(){
 
     return(
       <div className="postContainer">
-        {posts && posts.map((post) => (
+        {posts && posts.posts.map((post) => (
           <PostCard 
             post={post}
             key={post.id}

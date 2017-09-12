@@ -6,7 +6,7 @@ import uparrow from '../assets/uparrow.svg'
 import downarrow from '../assets/downarrow.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
-import {LoadCommentsAction} from '../actions'
+import {LoadCommentsAction, PostCommentAction} from '../actions'
 import '../App.css';
 
 class PostCard extends Component {
@@ -16,13 +16,20 @@ componentWillMount(){
 }
 
 submit = (values) => {
-    const comment = values.comment
+    const comment = {
+        body: values.comment,
+        id: helper.generateID(),
+        timestamp: helper.generateTimeStamp(),
+        owner: 'Colin',
+        parentID: this.props.post.id 
+    }
+    // const comment = values.comment
     const timestamp = helper.generateTimeStamp()
     const id = helper.generateID()
     const owner = 'Colin'
     const parentID = this.props.post.id
-    console.log(comment,id,timestamp, owner,parentID)
-    // this.props.postComment(comment, )
+    // console.log(comment,id,timestamp, owner,parentID)
+    this.props.postComment(comment)
 }
 
   render(){
@@ -63,6 +70,7 @@ submit = (values) => {
 function mapDispatchToProps (dispatch) {
     return {
       loadComments: (postID) => dispatch(LoadCommentsAction(postID)),
+      postComment: (comment) => dispatch(PostCommentAction(comment))
     }
   }
 

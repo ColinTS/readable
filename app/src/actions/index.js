@@ -73,14 +73,10 @@ export function LoadCommentsFailAction () {
   }
 }
 
-export function PostCommentAction(body, id, timestamp, owner, parentID){
+export function PostCommentAction(comment){
   return {
     type: POST_COMMENT,
-    body,
-    id,
-    timestamp,
-    owner,
-    parentID
+    comment
   }
 }
 

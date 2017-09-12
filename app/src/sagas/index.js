@@ -3,7 +3,8 @@ import * as API from '../utils/api.js'
 import { 
     LOAD_CATEGORIES,
     LOAD_POSTS,
-    LOAD_COMMENTS
+    LOAD_COMMENTS,
+    POST_COMMENT
 } from '../constants'
 import { 
     LoadCategoriesSuccessAction, 
@@ -11,7 +12,9 @@ import {
     LoadPostsSuccessAction,
     LoadPostsFailAction,
     LoadCommentsSuccessAction,
-    LoadCommentsFailAction
+    LoadCommentsFailAction,
+    PostCommentSuccessAction,
+    PostCommentFailAction
 } from '../actions'
 
 
@@ -44,10 +47,21 @@ export function* loadComments(action){
     }
 }
 
+export function* postComment(action){
+    try {
+        console.log('POST action', action)
+        const comment = yield call(API.postComment, action.comment)
+        yield put(PostCommentSuccessAction(comment))
+    } catch(error){
+        yield put(PostCommentFailAction())
+    }
+}
+
 function* defaultSaga() {
     yield takeLatest(LOAD_CATEGORIES, loadCategories);
     yield takeLatest(LOAD_POSTS, loadPosts);
     yield takeLatest(LOAD_COMMENTS, loadComments)
+    yield takeLatest(POST_COMMENT, postComment)
 }
   
 export default defaultSaga;

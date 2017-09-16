@@ -21,14 +21,8 @@ submit = (values) => {
         id: helper.generateID(),
         timestamp: helper.generateTimeStamp(),
         owner: 'Colin',
-        parentID: this.props.post.id 
+        parentId: this.props.post.id 
     }
-    // const comment = values.comment
-    const timestamp = helper.generateTimeStamp()
-    const id = helper.generateID()
-    const owner = 'Colin'
-    const parentID = this.props.post.id
-    // console.log(comment,id,timestamp, owner,parentID)
     this.props.postComment(comment)
 }
 

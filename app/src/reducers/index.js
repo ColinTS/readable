@@ -4,7 +4,8 @@ import { reducer as formReducer } from 'redux-form'
 import {
   LOAD_CATEGORIES_SUCCESS,
   LOAD_POSTS_SUCCESS,
-  LOAD_COMMENTS_SUCCESS
+  LOAD_COMMENTS_SUCCESS,
+  POST_COMMENT_SUCCESS
 } from '../constants.js'
 
 
@@ -12,7 +13,6 @@ const initialState = {
   categories: [],
   posts: [],
   comments: []
-
 }
 
 function categories(state = initialState, action){
@@ -41,6 +41,7 @@ function posts(state = initialState, action){
 
 function comments(state = initialState, action){
   switch(action.type) {
+    case POST_COMMENT_SUCCESS:
     case LOAD_COMMENTS_SUCCESS:
       return {
         ...state,

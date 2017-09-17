@@ -42,5 +42,4 @@ export const postComment = (comment) =>
     }
   )
   .then(res => res.data)
-  .then(res => console.og(res))
 

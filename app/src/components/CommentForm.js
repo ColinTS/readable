@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reset, reduxForm } from 'redux-form'
+
+const afterSubmit = (result, dispatch) =>
+  dispatch(reset('comment'));
 
 class CommentForm extends Component {
 
@@ -20,7 +23,8 @@ class CommentForm extends Component {
 }
 
 CommentForm = reduxForm({
-    form: 'comment'
+    form: 'comment',
+    onSubmitSuccess: afterSubmit
   })(CommentForm)
 
 export default CommentForm;

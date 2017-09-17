@@ -54,6 +54,7 @@ export function* postComment(action){
         yield put(PostCommentSuccessAction(comment))
     } catch(error){
         yield put(PostCommentFailAction())
+        Promise.reject(error)
     }
 }
 

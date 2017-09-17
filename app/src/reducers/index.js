@@ -41,16 +41,23 @@ function posts(state = initialState, action){
 
 function comments(state = initialState, action){
   switch(action.type) {
-    case POST_COMMENT_SUCCESS:
     case LOAD_COMMENTS_SUCCESS:
       return {
         ...state,
         comments: action.comments
     }
+    case POST_COMMENT_SUCCESS:
+    console.log(action.comment)
+      return {
+        ...state,
+        comments: [...state.comments, action.comment]
+      }
     default: 
       return state
   }
 }
+
+
 
 export default combineReducers({
   form: formReducer,

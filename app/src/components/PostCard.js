@@ -4,10 +4,12 @@ import * as helper from '../helpers.js'
 import { connect } from 'react-redux'
 import uparrow from '../assets/uparrow.svg'
 import downarrow from '../assets/downarrow.svg'
+import Delete from '../assets/Delete.svg'
+import Edit from '../assets/Edit.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
 import {LoadCommentsAction, PostCommentAction} from '../actions'
-import '../App.css';
+import '../index.css';
 
 class PostCard extends Component {
 
@@ -33,11 +35,14 @@ submit = (values) => {
     return(
 
         <div className='postCard'>
-            <div className='deletePost'>delete</div>
-            <div className='postHeader'> 
-                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow"></object>
+            <div className="postControls"> 
+                <object className='deletePost' type="image/svg+xml" data={Delete} alt="deletePost">delete</object>
                 <object className="down-arrow"type="image/svg+xml" data={downarrow} alt="downarrow"></object>
                 <div>{post.voteScore}</div>
+                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow"></object>
+                <object className='editPost' type="image/svg+xml" data={Edit} alt="editPost">edit</object>
+            </div>
+            <div className='postHeader'> 
                 <div>{post.title}</div>
                 <div>{post.author}</div>
             </div>
@@ -45,8 +50,9 @@ submit = (values) => {
                 <div>{post.body}</div> 
             </div>
             <div className='postComments'> 
-                {comments && comments.comments.map((comment) => (
+                {comments && comments.comments.map((comment,index) => (
                     <Comments
+                        index={index}
                         comment={comment}
                         key={comment.id}
                     />

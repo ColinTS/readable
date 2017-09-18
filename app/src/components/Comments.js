@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import '../index.css';
 
 export default class Comments extends Component {
 
   render(){
 
-    const {comment} = this.props
-
+    const {comment, index} = this.props
+    
     return(
       <div className="commentContainer">
-        <hr></hr>
-        {comment.body}
+        <div id={`comment${index}`} className="comment">
+          {comment.body}
+        </div>
       </div>
     )
   }

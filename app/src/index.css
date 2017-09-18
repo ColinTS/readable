@@ -24,7 +24,56 @@ body {
   margin: 0;
 }
 
+
+/* postCard */
+
 .postCard {
   background-color: #FFFFFF;
   width: 900px;
+}
+
+.postControls {
+  width: 850px;
+  padding-top: 25px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.postHeader {
+  padding-top: 60px;
+  padding-left: 25px;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+}
+
+.postBody {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-weight: bold;
+}
+
+.up-arrow {
+  height: 40px;
+}
+
+.down-arrow {
+  height: 40px;
+}
+
+.deletePost {
+  height: 30px
+}
+
+.editPost {
+  height: 30px
+}
+
+.comment {
+  border-bottom: 1px solid #000000;
+}
+
+#comment0 {
+  border-top: 1px solid #000000;
 }

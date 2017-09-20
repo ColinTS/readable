@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as API from '../utils/api.js'
 import * as helper from '../helpers.js'
 import { connect } from 'react-redux'
 import uparrow from '../assets/uparrow.svg'
@@ -8,10 +7,17 @@ import Delete from '../assets/Delete.svg'
 import Edit from '../assets/Edit.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
+import EditPostModal from './EditPostModal'
 import {LoadCommentsAction, PostCommentAction} from '../actions'
 import '../index.css';
+import { bindActionCreators } from 'redux'
+import { show } from 'redux-modal'
 
 class PostCard extends Component {
+
+handleOpen = name => () => {
+    this.props.show(name, { message: `This is a ${name} modal` })
+};
 
 componentWillMount(){
     this.props.loadComments(this.props.post.id)
@@ -31,16 +37,16 @@ submit = (values) => {
   render(){
     const { comments, post } = this.props
     const haveComments = comments.comments.length > 0
-    console.log('COM', comments)
     return(
 
         <div className='postCard'>
             <div className="postControls"> 
                 <object className='deletePost' type="image/svg+xml" data={Delete} alt="deletePost">delete</object>
-                <object className="down-arrow"type="image/svg+xml" data={downarrow} alt="downarrow"></object>
+                <object className="down-arrow"type="image/svg+xml" data={downarrow} alt="downarrow" aria-label="downarrow"></object>
                 <div>{post.voteScore}</div>
-                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow"></object>
-                <object className='editPost' type="image/svg+xml" data={Edit} alt="editPost">edit</object>
+                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow" aria-label="uparrow"></object>
+                <button onClick={this.handleOpen('editPost')} className='editPost' type="image/svg+xml" data={Edit} alt="editPost"></button>
+                <EditPostModal />
             </div>
             <div className='postHeader'> 
                 <div>{post.title}</div>
@@ -82,5 +88,6 @@ function mapStateToProps ({comments}) {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    // dispatch => bindActionCreators({ show }, dispatch),
   )(PostCard)

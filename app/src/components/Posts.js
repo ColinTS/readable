@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as API from '../utils/api.js'
 import {LoadPostsAction} from '../actions'
 import { connect } from 'react-redux'
 import PostCard from './PostCard'

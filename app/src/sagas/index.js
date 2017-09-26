@@ -4,7 +4,8 @@ import {
     LOAD_CATEGORIES,
     LOAD_POSTS,
     LOAD_COMMENTS,
-    POST_COMMENT
+    POST_COMMENT,
+    PUT_POST
 } from '../constants'
 import { 
     LoadCategoriesSuccessAction, 
@@ -58,11 +59,22 @@ export function* postComment(action){
     }
 }
 
+export function* putPost(action){
+    try {
+        console.log('PUT POST', action.post)
+        const post = yield call(API.editPost, action.post.postID, action.post.title, action.post.body)
+        console.log('POST',post)
+    } catch(error){
+        Promise.reject(error)
+    }
+}
+
 function* defaultSaga() {
     yield takeLatest(LOAD_CATEGORIES, loadCategories);
     yield takeLatest(LOAD_POSTS, loadPosts);
     yield takeLatest(LOAD_COMMENTS, loadComments)
     yield takeLatest(POST_COMMENT, postComment)
+    yield takeLatest(PUT_POST, putPost)
 }
   
 export default defaultSaga;

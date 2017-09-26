@@ -1,28 +1,48 @@
-import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
-import { connectModal } from 'redux-modal'
+import React, { Component } from 'react';
 
-class EditPostModal extends Component {
+import Button from 'material-ui/Button';
+import Dialog, {
+  DialogActions,
+  DialogTitle,
+} from 'material-ui/Dialog';
+import { Field, reduxForm } from 'redux-form'
 
+export class EditFormDialog extends Component {
+  state = {
+    open: false,
+  };
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+  handleRequestClose = () => {
+    this.setState({ open: false });
+  };
   render() {
-    const { show, handleHide, message } = this.props
-
     return (
-        <Modal show={show}>
-            <Modal.Header>
-                <Modal.Title>Edit your Post</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-            { message }
-            </Modal.Body>
-
-            <Modal.Footer>
-                <Button onClick={handleHide}>Close</Button>
-            </Modal.Footer>
-        </Modal>
+      <div>
+        <Button onClick={this.handleClickOpen}>Edit</Button>
+        <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
+          <DialogTitle>Edit your Post</DialogTitle>
+          <form id="editPost" onSubmit={ this.props.handleSubmit }>
+              <Field placeholder="title "component="input" name="title"  />
+              <Field placeholder="body" component="input" name="body"  />
+          </form>
+          <DialogActions>
+            <Button onClick={this.handleRequestClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleRequestClose} form="editPost" type="submit" color="primary">
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
   }
 }
 
-export default connectModal({ name: 'editPost', destroyOnHide: true })(EditPostModal)
+EditFormDialog = reduxForm({
+  form: 'editPost',
+})(EditFormDialog)
+
+export default EditFormDialog;

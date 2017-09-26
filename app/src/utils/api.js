@@ -43,3 +43,17 @@ export const postComment = (comment) =>
   )
   .then(res => res.data)
 
+export const editPost = (postID, title, body) =>
+  axios.put(`http://localhost:5001/posts/${postID}`,
+  {
+    title,
+    body
+  },
+  {
+    headers: { 
+      Authorization: token 
+    }
+  }
+)
+.then(res => res)
+

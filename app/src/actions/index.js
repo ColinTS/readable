@@ -10,7 +10,10 @@ import {
   LOAD_COMMENTS_FAIL,
   POST_COMMENT,
   POST_COMMENT_SUCCESS,
-  POST_COMMENT_FAIL
+  POST_COMMENT_FAIL,
+  PUT_POST,
+  PUT_POST_SUCCESS,
+  PUT_POST_FAIL
 } from '../constants.js'
 
 
@@ -91,5 +94,26 @@ export function PostCommentSuccessAction(comment){
 export function PostCommentFailAction(){
   return {
     type: POST_COMMENT_FAIL
+  }
+}
+
+//editing a post
+export function PutPostAction(post){
+  return {
+    type: PUT_POST,
+    post
+  }
+}
+
+export function PutPostSuccessAction(post){
+  return {
+    type: PUT_POST_SUCCESS,
+    post
+  }
+}
+
+export function PutPostFailAction(){
+  return {
+    type: PUT_POST_FAIL
   }
 }

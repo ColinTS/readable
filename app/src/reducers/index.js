@@ -6,7 +6,8 @@ import {
   LOAD_CATEGORIES_SUCCESS,
   LOAD_POSTS_SUCCESS,
   LOAD_COMMENTS_SUCCESS,
-  POST_COMMENT_SUCCESS
+  POST_COMMENT_SUCCESS,
+  PUT_POST_SUCCESS
 } from '../constants.js'
 
 
@@ -35,6 +36,14 @@ function posts(state = initialState, action){
         ...state,
         posts: action.posts
     }
+    case PUT_POST_SUCCESS:
+    console.log('POSTY',action.post.data)
+      return {
+        ...state,
+        posts: state.posts.map(
+          post => post.id === action.post.data.id ? {...post, title: action.post.data.title, body: action.post.data.body} : post
+        )
+      }
     default: 
       return state
   }
@@ -48,7 +57,7 @@ function comments(state = initialState, action){
         comments: action.comments
     }
     case POST_COMMENT_SUCCESS:
-    console.log(action.comment)
+    console.log('COMMENTY',action.comment)
       return {
         ...state,
         comments: [...state.comments, action.comment]

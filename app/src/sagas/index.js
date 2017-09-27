@@ -15,7 +15,8 @@ import {
     LoadCommentsSuccessAction,
     LoadCommentsFailAction,
     PostCommentSuccessAction,
-    PostCommentFailAction
+    PostCommentFailAction,
+    PutPostSuccessAction,
 } from '../actions'
 
 
@@ -63,6 +64,7 @@ export function* putPost(action){
     try {
         console.log('PUT POST', action.post)
         const post = yield call(API.editPost, action.post.postID, action.post.title, action.post.body)
+        yield put(PutPostSuccessAction(post))
         console.log('POST',post)
     } catch(error){
         Promise.reject(error)

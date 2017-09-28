@@ -17,3 +17,5 @@ export const POST_COMMENT_FAIL = 'POST_COMMENT_FAIL'
 export const PUT_POST = 'PUT_POST'
 export const PUT_POST_SUCCESS = 'PUT_POST_SUCCESS'
 export const PUT_POST_FAIL = 'PUT_POST_FAIL'
+
+export const EDIT_MODAL_ON = "EDIT_MODAL_ON"

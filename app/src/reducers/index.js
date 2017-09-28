@@ -7,7 +7,8 @@ import {
   LOAD_POSTS_SUCCESS,
   LOAD_COMMENTS_SUCCESS,
   POST_COMMENT_SUCCESS,
-  PUT_POST_SUCCESS
+  PUT_POST_SUCCESS,
+  EDIT_MODAL_ON
 } from '../constants.js'
 
 
@@ -67,6 +68,19 @@ function comments(state = initialState, action){
   }
 }
 
+function editModal(state = {open: false}, action){
+  switch(action.type){
+    case EDIT_MODAL_ON:
+      console.log(state)
+      return {
+        ...state,
+        open: true
+      }
+      default:
+        return state
+  }
+}
+
 
 
 export default combineReducers({
@@ -74,5 +88,6 @@ export default combineReducers({
   modal,
   categories,
   posts,
-  comments
+  comments,
+  editModal
 })

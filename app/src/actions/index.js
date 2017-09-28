@@ -13,7 +13,8 @@ import {
   POST_COMMENT_FAIL,
   PUT_POST,
   PUT_POST_SUCCESS,
-  PUT_POST_FAIL
+  PUT_POST_FAIL,
+  EDIT_MODAL_ON,
 } from '../constants.js'
 
 
@@ -115,5 +116,12 @@ export function PutPostSuccessAction(post){
 export function PutPostFailAction(){
   return {
     type: PUT_POST_FAIL
+  }
+}
+
+//Turn ON/OFF Edit Post Modal
+export function EditModalOnAction(){
+  return {
+    type: EDIT_MODAL_ON
   }
 }

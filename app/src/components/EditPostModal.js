@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-
+import { EditModalOnAction } from '../actions'
 import Button from 'material-ui/Button';
 import Dialog, {
   DialogActions,
   DialogTitle,
 } from 'material-ui/Dialog';
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 
 export class EditFormDialog extends Component {
   state = {
     open: false,
   };
+
   handleClickOpen = () => {
-    this.setState({ open: true });
+    this.props.modalOn()
   };
   handleRequestClose = () => {
     this.setState({ open: false });
@@ -41,8 +43,17 @@ export class EditFormDialog extends Component {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    modalOn: () => dispatch(EditModalOnAction()),
+  }
+}
+
 EditFormDialog = reduxForm({
   form: 'editPost',
 })(EditFormDialog)
 
-export default EditFormDialog;
+export default connect(
+  false,
+  mapDispatchToProps,
+)(EditFormDialog)

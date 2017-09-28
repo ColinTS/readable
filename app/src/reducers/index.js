@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { reducer as modal } from 'redux-modal'
 
 import {
   LOAD_CATEGORIES_SUCCESS,
@@ -81,11 +80,8 @@ function editModal(state = {open: false}, action){
   }
 }
 
-
-
 export default combineReducers({
   form: formReducer,
-  modal,
   categories,
   posts,
   comments,

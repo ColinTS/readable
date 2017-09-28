@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {LoadPostsAction} from '../actions'
 import { connect } from 'react-redux'
 import PostCard from './PostCard'
+import AddPost from './AddPost'
 
 class Posts extends Component {
 
@@ -21,6 +22,7 @@ componentWillMount(){
             key={post.id}
           />
         ))}
+        <AddPost />
       </div>
     )
   }

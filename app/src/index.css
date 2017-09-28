@@ -77,3 +77,11 @@ body {
 #comment0 {
   border-top: 1px solid #000000;
 }
+
+.addPostButton {
+  position:fixed;
+  right:0;
+  bottom:0;
+  margin-right: 50;
+  margin-bottom: 50;
+}

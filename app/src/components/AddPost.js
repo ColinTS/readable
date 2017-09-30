@@ -53,7 +53,7 @@ class AddPost extends Component {
           <AddPostModal 
             open={this.state.open}
             onRequestClose={this.onRequestClose}
-            onSubmit = {this.submitPost}
+            onSubmit={this.submitPost}
           />
         </Button>
 

@@ -14,25 +14,25 @@ export class AddPostDialog extends Component {
     this.props.onRequestClose(false)
   };
 
-  submitPost = (values) => {
-    console.log(values)
-    const post = {
-      id: helper.generateID(),
-      timestamp: helper.generateTimeStamp(),
-      title: values.title,
-      body: values.body,
-      author: 'Colin',
-      category: this.props.category
-    }
-    // this.props.postPost(post)
-  }
+  // submit = (values) => {
+  //   console.log(values)
+  //   const post = {
+  //     id: helper.generateID(),
+  //     timestamp: helper.generateTimeStamp(),
+  //     title: values.title,
+  //     body: values.body,
+  //     author: 'Colin',
+  //     category: this.props.category
+  //   }
+  //   // this.props.postPost(post)
+  // }
 
   render() {
     return (
       <div>
         <Dialog open={this.props.open}>
           <DialogTitle>Add a Post</DialogTitle>
-          <form id="postPost" onSubmit={ this.submitPost } >
+          <form id="postPost" onSubmit={ this.props.handleSubmit } >
               <Field placeholder="title "component="input" name="title"  />
               <Field placeholder="body" component="input" name="body"  />
           </form>

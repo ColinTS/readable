@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {LoadPostsAction} from '../actions'
+import {LoadPostsAction, SetCategoryAction} from '../actions'
 import { connect } from 'react-redux'
 import PostCard from './PostCard'
 import AddPost from './AddPost'
@@ -8,12 +8,12 @@ class Posts extends Component {
 
 componentWillMount(){
     const categoryName = this.props.match.params.name
+    this.props.setCategory(categoryName)
     this.props.loadPosts(categoryName)
 }
 
   render(){
     const { posts } = this.props
-
     return(
       <div className="postContainer">
         {posts && posts.posts.map((post) => (
@@ -31,6 +31,7 @@ componentWillMount(){
 function mapDispatchToProps (dispatch) {
     return {
       loadPosts: (category) => dispatch(LoadPostsAction(category)),
+      setCategory: (category) => dispatch(SetCategoryAction(category))
     }
   }
 

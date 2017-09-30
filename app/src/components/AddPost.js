@@ -5,12 +5,6 @@ import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import AddPostModal from './AddPostModal'
 
-import Dialog, {
-  DialogActions,
-  DialogTitle,
-} from 'material-ui/Dialog';
-import { Field, reduxForm } from 'redux-form'
-
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,

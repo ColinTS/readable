@@ -19,3 +19,5 @@ export const PUT_POST_SUCCESS = 'PUT_POST_SUCCESS'
 export const PUT_POST_FAIL = 'PUT_POST_FAIL'
 
 export const EDIT_MODAL_ON = "EDIT_MODAL_ON"
+
+export const SET_CATEGORY = "SET_CATEGORY"

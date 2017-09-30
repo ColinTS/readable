@@ -15,6 +15,7 @@ import {
   PUT_POST_SUCCESS,
   PUT_POST_FAIL,
   EDIT_MODAL_ON,
+  SET_CATEGORY
 } from '../constants.js'
 
 
@@ -123,5 +124,14 @@ export function PutPostFailAction(){
 export function EditModalOnAction(){
   return {
     type: EDIT_MODAL_ON
+  }
+}
+
+//set the current category name
+export function SetCategoryAction(category){
+  console.log('action',category)
+  return {
+    type: SET_CATEGORY,
+    category
   }
 }

@@ -7,14 +7,16 @@ import {
   LOAD_COMMENTS_SUCCESS,
   POST_COMMENT_SUCCESS,
   PUT_POST_SUCCESS,
-  EDIT_MODAL_ON
+  EDIT_MODAL_ON,
+  SET_CATEGORY
 } from '../constants.js'
 
 
 const initialState = {
   categories: [],
   posts: [],
-  comments: []
+  comments: [],
+  category: "",
 }
 
 function categories(state = initialState, action){
@@ -80,10 +82,24 @@ function editModal(state = {open: false}, action){
   }
 }
 
+function category(state = initialState, action){
+  switch(action.type){
+    case SET_CATEGORY:
+    console.log('ACTION', action)
+      return {
+        ...state,
+        category: action.category
+      }
+      default:
+        return state
+  }
+}
+
 export default combineReducers({
   form: formReducer,
   categories,
   posts,
   comments,
-  editModal
+  editModal,
+  category
 })

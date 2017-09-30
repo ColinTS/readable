@@ -4,6 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import AddPostModal from './AddPostModal'
+import { connect } from 'react-redux'
+import * as helper from '../helpers.js'
 
 const styles = theme => ({
   button: {
@@ -28,6 +30,19 @@ class AddPost extends Component {
     this.setState({open: false})
   }
 
+  submitPost = (values) => {
+    console.log(values)
+    const post = {
+      id: helper.generateID(),
+      timestamp: helper.generateTimeStamp(),
+      title: values.title,
+      body: values.body,
+      author: 'Colin',
+      category: this.props.category
+    }
+    // this.props.postPost(post)
+  }
+
   render(){
     const classes = this.props.classes;
 
@@ -38,6 +53,7 @@ class AddPost extends Component {
           <AddPostModal 
             open={this.state.open}
             onRequestClose={this.onRequestClose}
+            onSubmit = {this.submitPost}
           />
         </Button>
 
@@ -46,8 +62,16 @@ class AddPost extends Component {
   }
 }
 
+function mapStateToProps ({category}) {
+  return {
+      category
+  }
+}
+
 AddPost.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AddPost);
+export default connect (
+  mapStateToProps)
+(withStyles(styles)(AddPost));

@@ -69,3 +69,16 @@ axios.post(`http://localhost:5001/posts`,
 }
 )
 .then(res => res)
+
+export const downPost = (postID, option) =>
+axios.post(`http://localhost:5001/posts/${postID}`,
+{
+  option
+},
+{
+  headers: { 
+    Authorization: token 
+  }
+}
+)
+.then(res => res)

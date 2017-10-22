@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import * as helper from '../helpers.js'
 import { connect } from 'react-redux'
-import uparrow from '../assets/uparrow.svg'
-import downarrow from '../assets/downarrow.svg'
 import Delete from '../assets/Delete.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
 import EditPostModal from './EditPostModal'
-import {LoadCommentsAction, PostCommentAction, PutPostAction} from '../actions'
+import {LoadCommentsAction, PostCommentAction, PutPostAction, DownPostAction} from '../actions'
+import Button from 'material-ui/Button';
+import ArrowDropUp from 'material-ui-icons/ArrowDropUp'
+import ArrowDropDown from 'material-ui-icons/ArrowDropDown'
+
 import '../index.css';
 
 class PostCard extends Component {
@@ -36,6 +38,10 @@ editPostSubmit = (values) => {
     this.props.editPost(post)
 }
 
+downVote = () => {
+    this.props.downPost(this.props.post.id)
+}
+
   render(){
     const { comments, post } = this.props
     const haveComments = comments.comments.length > 0
@@ -44,9 +50,13 @@ editPostSubmit = (values) => {
         <div className='postCard'>
             <div className="postControls"> 
                 <object className='deletePost' type="image/svg+xml" data={Delete} alt="deletePost">delete</object>
-                <object className="down-arrow"type="image/svg+xml" data={downarrow} alt="downarrow" aria-label="downarrow"></object>
+                <Button onClick={this.downVote}>
+                    <ArrowDropDown />
+                </Button>
                 <div>{post.voteScore}</div>
-                <object className="up-arrow"type="image/svg+xml" data={uparrow} alt="uparrow" aria-label="uparrow"></object>
+                <Button>
+                    <ArrowDropUp />
+                </Button>
                 <EditPostModal 
                     onSubmit={this.editPostSubmit}
                 />
@@ -80,7 +90,8 @@ function mapDispatchToProps (dispatch) {
     return {
       loadComments: (postID) => dispatch(LoadCommentsAction(postID)),
       postComment: (comment) => dispatch(PostCommentAction(comment)),
-      editPost: (postID, post) => dispatch(PutPostAction(postID, post))
+      editPost: (postID, post) => dispatch(PutPostAction(postID, post)),
+      downPost: (postID) => dispatch(DownPostAction(postID))
     }
   }
 

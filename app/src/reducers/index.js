@@ -8,6 +8,7 @@ import {
   POST_COMMENT_SUCCESS,
   PUT_POST_SUCCESS,
   POST_POST_SUCCESS,
+  DOWN_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -51,6 +52,16 @@ function posts(state = initialState, action){
     return {
       ...state,
       posts: [...state.posts, action.post.data]
+    }
+    case DOWN_POST_SUCCESS:
+    console.log('DOWNPOST', state, action)
+    return {
+      ...state,
+      posts: state.posts.map(
+        post => post.id === action.postID.data.id ? {...post, voteScore: action.postID.data.voteScore} : post
+      ).sort((a,b) => {
+        return b.voteScore - a.voteScore
+      })
     }
     default: 
       return state

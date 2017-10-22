@@ -20,8 +20,9 @@ body {
 
 .postContainer {
   display: flex;
-  justify-content: center;
+  align-items: center;
   margin: 0;
+  flex-direction: column;
 }
 
 
@@ -30,6 +31,7 @@ body {
 .postCard {
   background-color: #FFFFFF;
   width: 900px;
+  margin-top: 50px;
 }
 
 .postControls {

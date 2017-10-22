@@ -14,6 +14,9 @@ import {
   PUT_POST,
   PUT_POST_SUCCESS,
   PUT_POST_FAIL,
+  POST_POST,
+  POST_POST_SUCCESS,
+  POST_POST_FAIL,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -117,6 +120,27 @@ export function PutPostSuccessAction(post){
 export function PutPostFailAction(){
   return {
     type: PUT_POST_FAIL
+  }
+}
+
+//Add a post
+export function PostPostAction(post){
+  return {
+    type: POST_POST,
+    post
+  }
+}
+
+export function PostPostSuccessAction(post){
+  return {
+    type: POST_POST_SUCCESS,
+    post
+  }
+}
+
+export function PostPostFailAction(){
+  return {
+    type: POST_POST_FAIL
   }
 }
 

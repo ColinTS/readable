@@ -57,3 +57,15 @@ export const editPost = (postID, title, body) =>
 )
 .then(res => res)
 
+export const postPost = (post) =>
+axios.post(`http://localhost:5001/posts`,
+{
+  ...post
+},
+{
+  headers: { 
+    Authorization: token 
+  }
+}
+)
+.then(res => res)

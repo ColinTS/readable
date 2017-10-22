@@ -6,26 +6,12 @@ import Dialog, {
 } from 'material-ui/Dialog';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import * as helper from '../helpers.js'
 
 export class AddPostDialog extends Component {
 
   handleRequestClose = () => {
     this.props.onRequestClose(false)
   };
-
-  // submit = (values) => {
-  //   console.log(values)
-  //   const post = {
-  //     id: helper.generateID(),
-  //     timestamp: helper.generateTimeStamp(),
-  //     title: values.title,
-  //     body: values.body,
-  //     author: 'Colin',
-  //     category: this.props.category
-  //   }
-  //   // this.props.postPost(post)
-  // }
 
   render() {
     return (

@@ -7,6 +7,7 @@ import {
   LOAD_COMMENTS_SUCCESS,
   POST_COMMENT_SUCCESS,
   PUT_POST_SUCCESS,
+  POST_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -39,13 +40,18 @@ function posts(state = initialState, action){
         posts: action.posts
     }
     case PUT_POST_SUCCESS:
-    console.log('POSTY',action.post.data)
       return {
         ...state,
         posts: state.posts.map(
           post => post.id === action.post.data.id ? {...post, title: action.post.data.title, body: action.post.data.body} : post
         )
       }
+    case POST_POST_SUCCESS:
+    console.log('NEWPOST', action.post.data)
+    return {
+      ...state,
+      posts: [...state.posts, action.post.data]
+    }
     default: 
       return state
   }

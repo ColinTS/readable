@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import AddPostModal from './AddPostModal'
+import { PostPostAction } from '../actions'
 import { connect } from 'react-redux'
 import * as helper from '../helpers.js'
 
@@ -40,11 +41,12 @@ class AddPost extends Component {
       author: 'Colin',
       category: this.props.category
     }
-    // this.props.postPost(post)
+    this.props.postPost(post)
   }
 
   render(){
     const classes = this.props.classes;
+
 
     return (
       <div>
@@ -68,10 +70,17 @@ function mapStateToProps ({category}) {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    postPost: (post) => dispatch(PostPostAction(post))
+  }
+}
+
 AddPost.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 export default connect (
-  mapStateToProps)
-(withStyles(styles)(AddPost));
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(AddPost));

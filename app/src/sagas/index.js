@@ -5,7 +5,8 @@ import {
     LOAD_POSTS,
     LOAD_COMMENTS,
     POST_COMMENT,
-    PUT_POST
+    PUT_POST,
+    POST_POST
 } from '../constants'
 import { 
     LoadCategoriesSuccessAction, 
@@ -17,6 +18,7 @@ import {
     PostCommentSuccessAction,
     PostCommentFailAction,
     PutPostSuccessAction,
+    PostPostSuccessAction
 } from '../actions'
 
 
@@ -71,12 +73,22 @@ export function* putPost(action){
     }
 }
 
+export function* postPost(action){
+    try {
+        const post = yield call(API.postPost, action.post)
+        yield put(PostPostSuccessAction(post))
+    } catch(error){
+        Promise.reject(error)
+    }
+}
+
 function* defaultSaga() {
     yield takeLatest(LOAD_CATEGORIES, loadCategories);
     yield takeLatest(LOAD_POSTS, loadPosts);
     yield takeLatest(LOAD_COMMENTS, loadComments)
     yield takeLatest(POST_COMMENT, postComment)
     yield takeLatest(PUT_POST, putPost)
+    yield takeLatest(POST_POST, postPost)
 }
   
 export default defaultSaga;

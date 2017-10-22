@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import PostCard from './PostCard'
 import AddPost from './AddPost'
 
+import '../index.css';
+
 class Posts extends Component {
 
 componentWillMount(){

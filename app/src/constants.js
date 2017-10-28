@@ -25,6 +25,9 @@ export const POST_POST_FAIL = 'POST_POST_FAIL'
 export const DOWN_POST = 'DOWN_POST'
 export const DOWN_POST_SUCCESS = 'DOWN_POST_SUCCESS'
 
+export const UP_POST = 'UP_POST'
+export const UP_POST_SUCCESS = 'UP_POST_SUCCESS'
+
 export const EDIT_MODAL_ON = "EDIT_MODAL_ON"
 
 export const SET_CATEGORY = "SET_CATEGORY"

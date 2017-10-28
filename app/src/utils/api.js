@@ -82,3 +82,16 @@ axios.post(`http://localhost:5001/posts/${postID}`,
 }
 )
 .then(res => res)
+
+export const upPost = (postID, option) =>
+axios.post(`http://localhost:5001/posts/${postID}`,
+{
+  option
+},
+{
+  headers: { 
+    Authorization: token 
+  }
+}
+)
+.then(res => res)

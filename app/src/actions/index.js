@@ -19,6 +19,8 @@ import {
   POST_POST_FAIL,
   DOWN_POST,
   DOWN_POST_SUCCESS,
+  UP_POST,
+  UP_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -155,10 +157,26 @@ export function DownPostAction(postID){
   }
 }
 
-export function DownPostSuccessAction(postID){
+export function DownPostSuccessAction(post){
   return {
     type: DOWN_POST_SUCCESS,
-    postID
+    post
+  }
+}
+
+//upvote a post
+export function UpPostAction(postID){
+  return {
+    type: UP_POST,
+    postID,
+    option: 'upVote'
+  }
+}
+
+export function UpPostSuccessAction(post){
+  return {
+    type: UP_POST_SUCCESS,
+    post
   }
 }
 

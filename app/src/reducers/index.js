@@ -9,6 +9,7 @@ import {
   PUT_POST_SUCCESS,
   POST_POST_SUCCESS,
   DOWN_POST_SUCCESS,
+  UP_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -38,7 +39,9 @@ function posts(state = initialState, action){
     case LOAD_POSTS_SUCCESS:
       return {
         ...state,
-        posts: action.posts
+        posts: action.posts.sort((b,a) => {
+          return a.voteScore - b.voteScore
+        })
     }
     case PUT_POST_SUCCESS:
       return {
@@ -58,9 +61,19 @@ function posts(state = initialState, action){
     return {
       ...state,
       posts: state.posts.map(
-        post => post.id === action.postID.data.id ? {...post, voteScore: action.postID.data.voteScore} : post
+        post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
       ).sort((a,b) => {
         return b.voteScore - a.voteScore
+      })
+    }
+    case UP_POST_SUCCESS:
+    console.log('UPPOST', state, action)
+    return {
+      ...state,
+      posts: state.posts.map(
+        post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
+      ).sort((b,a) => {
+        return a.voteScore - b.voteScore
       })
     }
     default: 

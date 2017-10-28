@@ -5,7 +5,7 @@ import Delete from '../assets/Delete.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
 import EditPostModal from './EditPostModal'
-import {LoadCommentsAction, PostCommentAction, PutPostAction, DownPostAction} from '../actions'
+import {LoadCommentsAction, PostCommentAction, PutPostAction, DownPostAction, UpPostAction} from '../actions'
 import Button from 'material-ui/Button';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp'
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown'
@@ -42,6 +42,10 @@ downVote = () => {
     this.props.downPost(this.props.post.id)
 }
 
+upVote = () => {
+    this.props.upPost(this.props.post.id)
+}
+
   render(){
     const { comments, post } = this.props
     const haveComments = comments.comments.length > 0
@@ -54,7 +58,7 @@ downVote = () => {
                     <ArrowDropDown />
                 </Button>
                 <div>{post.voteScore}</div>
-                <Button>
+                <Button onClick={this.upVote}>
                     <ArrowDropUp />
                 </Button>
                 <EditPostModal 
@@ -91,7 +95,8 @@ function mapDispatchToProps (dispatch) {
       loadComments: (postID) => dispatch(LoadCommentsAction(postID)),
       postComment: (comment) => dispatch(PostCommentAction(comment)),
       editPost: (postID, post) => dispatch(PutPostAction(postID, post)),
-      downPost: (postID) => dispatch(DownPostAction(postID))
+      downPost: (postID) => dispatch(DownPostAction(postID)),
+      upPost: (postID) => dispatch(UpPostAction(postID))
     }
   }
 

@@ -23,26 +23,6 @@ const defaultData = {
     voteScore: -5,
     deleted: false
   },
-  "8pf0y6ziyjabvozdd253nd": {
-    id: '8pf0y6ziyjabvozdd253nd',
-    timestamp: 1467166872634,
-    title: 'React is pretty cool',
-    body: 'Check this out.',
-    author: 'thingtwo',
-    category: 'react',
-    voteScore: 4,
-    deleted: false 
-  },
-  "6di6ok3ym7mf1p33lnez": {
-    id: '6di6ok3ym7mf1p33lnez',
-    timestamp: 1468479767190,
-    title: 'Let us learn react!',
-    body: 'Another post.',
-    author: 'thingone',
-    category: 'react',
-    voteScore: 0,
-    deleted: false
-  }
 }
 
 function getData (token) {

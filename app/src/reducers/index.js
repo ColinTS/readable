@@ -10,6 +10,7 @@ import {
   POST_POST_SUCCESS,
   DOWN_POST_SUCCESS,
   UP_POST_SUCCESS,
+  DELETE_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -40,8 +41,8 @@ function posts(state = initialState, action){
       return {
         ...state,
         posts: action.posts.sort((b,a) => {
-          return a.voteScore - b.voteScore
-        })
+        return a.voteScore - b.voteScore
+      })
     }
     case PUT_POST_SUCCESS:
       return {
@@ -51,31 +52,39 @@ function posts(state = initialState, action){
         )
       }
     case POST_POST_SUCCESS:
-    console.log('NEWPOST', action.post.data)
-    return {
-      ...state,
-      posts: [...state.posts, action.post.data]
-    }
+      console.log('NEWPOST', action.post.data)
+      return {
+        ...state,
+        posts: [...state.posts, action.post.data]
+      }
     case DOWN_POST_SUCCESS:
-    console.log('DOWNPOST', state, action)
-    return {
-      ...state,
-      posts: state.posts.map(
-        post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
-      ).sort((a,b) => {
-        return b.voteScore - a.voteScore
-      })
-    }
+      console.log('DOWNPOST', state, action)
+      return {
+        ...state,
+        posts: state.posts.map(
+          post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
+        ).sort((a,b) => {
+          return b.voteScore - a.voteScore
+        })
+      }
     case UP_POST_SUCCESS:
-    console.log('UPPOST', state, action)
-    return {
-      ...state,
-      posts: state.posts.map(
-        post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
-      ).sort((b,a) => {
-        return a.voteScore - b.voteScore
-      })
-    }
+      console.log('UPPOST', state, action)
+      return {
+        ...state,
+        posts: state.posts.map(
+          post => post.id === action.post.data.id ? {...post, voteScore: action.post.data.voteScore} : post
+        ).sort((b,a) => {
+          return a.voteScore - b.voteScore
+        })
+      }
+    case DELETE_POST_SUCCESS:
+    console.log('DELETE POST', state, action)
+      return {
+        ...state,
+        posts: state.posts.map(
+          post => post.id === action.post.data.id ? {...post, deleted: true} : post
+        ).filter(post => post.deleted)
+      }
     default: 
       return state
   }
@@ -89,7 +98,7 @@ function comments(state = initialState, action){
         comments: action.comments
     }
     case POST_COMMENT_SUCCESS:
-    console.log('COMMENTY',action.comment)
+    console.log('NEW COMMENT',action.comment)
       return {
         ...state,
         comments: [...state.comments, action.comment]

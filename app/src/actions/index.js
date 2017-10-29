@@ -21,6 +21,8 @@ import {
   DOWN_POST_SUCCESS,
   UP_POST,
   UP_POST_SUCCESS,
+  DELETE_POST,
+  DELETE_POST_SUCCESS,
   EDIT_MODAL_ON,
   SET_CATEGORY
 } from '../constants.js'
@@ -176,6 +178,21 @@ export function UpPostAction(postID){
 export function UpPostSuccessAction(post){
   return {
     type: UP_POST_SUCCESS,
+    post
+  }
+}
+
+//delete a post
+export function DeletePostAction(postID){
+  return {
+    type: DELETE_POST,
+    postID
+  }
+}
+
+export function DeletePostSuccessAction(post){
+  return {
+    type: DELETE_POST_SUCCESS,
     post
   }
 }

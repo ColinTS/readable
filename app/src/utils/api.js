@@ -95,3 +95,13 @@ axios.post(`http://localhost:5001/posts/${postID}`,
 }
 )
 .then(res => res)
+
+export const deletePost = (postID) =>
+axios.delete(`http://localhost:5001/posts/${postID}`,
+{
+  headers: { 
+    Authorization: token 
+  }
+}
+)
+.then(res => res)

@@ -28,6 +28,9 @@ export const DOWN_POST_SUCCESS = 'DOWN_POST_SUCCESS'
 export const UP_POST = 'UP_POST'
 export const UP_POST_SUCCESS = 'UP_POST_SUCCESS'
 
+export const DELETE_POST = 'DELETE_POST'
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS'
+
 export const EDIT_MODAL_ON = "EDIT_MODAL_ON"
 
 export const SET_CATEGORY = "SET_CATEGORY"

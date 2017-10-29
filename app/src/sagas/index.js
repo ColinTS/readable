@@ -8,7 +8,8 @@ import {
     PUT_POST,
     POST_POST,
     DOWN_POST,
-    UP_POST
+    UP_POST,
+    DELETE_POST
 } from '../constants'
 import { 
     LoadCategoriesSuccessAction, 
@@ -22,7 +23,8 @@ import {
     PutPostSuccessAction,
     PostPostSuccessAction,
     DownPostSuccessAction,
-    UpPostSuccessAction
+    UpPostSuccessAction,
+    DeletePostSuccessAction
 } from '../actions'
 
 
@@ -106,6 +108,16 @@ export function* upPost(action){
     }
 }
 
+export function* deletePost(action){
+    try {
+        console.log('Delete', action)
+        const post = yield call(API.deletePost, action.postID)
+        yield put(DeletePostSuccessAction(post))
+    } catch(error){
+        Promise.reject(error)
+    }
+}
+
 function* defaultSaga() {
     yield takeLatest(LOAD_CATEGORIES, loadCategories);
     yield takeLatest(LOAD_POSTS, loadPosts);
@@ -115,6 +127,7 @@ function* defaultSaga() {
     yield takeLatest(POST_POST, postPost)
     yield takeLatest(DOWN_POST, downPost)
     yield takeLatest(UP_POST, upPost)
+    yield takeLatest(DELETE_POST, deletePost)
 }
   
 export default defaultSaga;

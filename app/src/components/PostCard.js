@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import * as helper from '../helpers.js'
 import { connect } from 'react-redux'
-import Delete from '../assets/Delete.svg'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
 import EditPostModal from './EditPostModal'
-import {LoadCommentsAction, PostCommentAction, PutPostAction, DownPostAction, UpPostAction} from '../actions'
+import {LoadCommentsAction, PostCommentAction, PutPostAction, DownPostAction, UpPostAction, DeletePostAction} from '../actions'
 import Button from 'material-ui/Button';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp'
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown'
@@ -46,6 +45,10 @@ upVote = () => {
     this.props.upPost(this.props.post.id)
 }
 
+deletePost = () => {
+    this.props.deletePost(this.props.post.id)
+}
+
   render(){
     const { comments, post } = this.props
     const haveComments = comments.comments.length > 0
@@ -53,7 +56,7 @@ upVote = () => {
 
         <div className='postCard'>
             <div className="postControls"> 
-                <object className='deletePost' type="image/svg+xml" data={Delete} alt="deletePost">delete</object>
+                <Button onClick={this.deletePost} className='deletePost'>delete</Button>
                 <Button onClick={this.downVote}>
                     <ArrowDropDown />
                 </Button>
@@ -96,7 +99,8 @@ function mapDispatchToProps (dispatch) {
       postComment: (comment) => dispatch(PostCommentAction(comment)),
       editPost: (postID, post) => dispatch(PutPostAction(postID, post)),
       downPost: (postID) => dispatch(DownPostAction(postID)),
-      upPost: (postID) => dispatch(UpPostAction(postID))
+      upPost: (postID) => dispatch(UpPostAction(postID)),
+      deletePost: (postID) => dispatch(DeletePostAction(postID))
     }
   }
 
